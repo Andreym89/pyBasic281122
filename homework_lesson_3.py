@@ -1,4 +1,10 @@
 #task 1
+
+student = int(input("Enter schoolboys count: "))
+apples = int(input("Enter apples count: "))
+
+print(f"Each student will receive {int(apples/student)} apple(s) and {apples%student} apple(s) left in basket")
+
 #task 2
 
 
