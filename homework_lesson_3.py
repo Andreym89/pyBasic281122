@@ -40,4 +40,3 @@ hours = input_var / 60 / 60 % 60
 
 print(f"Time is: {int(hours)}:{int(minutes)}:{int(seconds)}")
 
-
