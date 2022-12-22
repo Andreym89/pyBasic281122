@@ -26,4 +26,11 @@ else:
 
 # task_4
 # task_5
+
 # task_6
+my_list1 = [random.randint(-100, 100) for i in range(20)]
+my_list2 = [random.randint(-100, 100) for i in range(20)]
+
+print(my_list1)
+print(my_list2)
+print('Uniq valuse count in my_list1 and my_list2: ', len(set(my_list1)) + len(set(my_list2)))
