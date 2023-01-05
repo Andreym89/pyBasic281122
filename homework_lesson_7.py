@@ -27,6 +27,7 @@ print(my_list)
 new_list = my_list
 new_list.append(my_list[0])
 new_list.pop(0)
+#new_list = my_list[1:] + my_list[0:1]
 print(new_list)
 
 # task 5
@@ -34,3 +35,13 @@ my_list = [1, 2, 3, 4, 5]
 print(my_list)
 my_list[0], my_list[-1] = my_list[-1], my_list[0]
 print(my_list)
+
+# task 6
+my_str = '43 больше чем 34, но меньше чем 56'
+#print(my_str.split())
+sum = sum(int(word) for word in my_str.split() if word.isdigit())
+print(sum)
+
+# task 7
+
+
