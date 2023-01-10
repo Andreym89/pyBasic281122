@@ -1,22 +1,11 @@
-'''def main_t(var1:str):
-    print(var1)
-    """documentation"""
+import lesson_9_module as l9m
 
-def main_t(var1:int):
-    print(var1)
-    """documentation"""
+# Task 1
+my_list_1 = ['string 1', 'string 2', 'string 3', 'string 4', 'string 5', 'string 6', 'string 7']
+print('Task 1: ', l9m.function_1(my_list_1))
 
-main_t(2)
-main_t('s')
-main_t(21)
-main_t('fvdfvdf')
-'''
+# Task 2
+my_list_2 = ['string 1', 'string 2', 'string 3', 'string 4', 'string 5', 'string 6', 'string 7']
+print('Task 1: ', l9m.function_2(my_list_2))
 
-def fun1(var1)->None:
-    print(var1)
-
-def fun1(var1, var2)->None:
-    print(var1, var2)
-
-fun1(2)
-fun1("s",5)
+# Task 3

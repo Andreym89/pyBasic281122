@@ -39,7 +39,7 @@ my_list4.pop()
 
 # task_5
 my_list5 = [random.randint(-100, 100) for i in range(20)]
-k = 5
+k = 0
 C = 7
 for index in range(len(my_list5) + 1):
     if index == k:
