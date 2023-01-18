@@ -11,9 +11,20 @@ def write_txt_file(filename: str, data) -> None:
     with open(filename, 'wt') as file:
         data = file.write(str(data))
 
+
+def delete_some_symbols(text: str) -> str:
+    gramar_list = ['.', ',', '!', '?', "'"]
+    text = text.replace('\n', ' ')
+    for i in range(0, len(gramar_list)):
+        text = text.replace(gramar_list[i], '')
+    return text
+
+
 def word_cleaner(word: str) -> list:
     list_word_spec_chair = []
     return list_word_spec_chair
+
+
 def censor_function(forbidden_word: str) -> str:
     """
     функция возвращает строку с подмененными центральными символами на *
@@ -25,9 +36,6 @@ def censor_function(forbidden_word: str) -> str:
         star_count = len(forbidden_word) - 2
         forbidden_word = forbidden_word[0] + '*' * star_count + forbidden_word[len(forbidden_word) - 1]
     return forbidden_word
-
-
-
 
 
 def censored_text(text: str, forbidden_words: list) -> None:
@@ -55,4 +63,35 @@ def censored_text(text: str, forbidden_words: list) -> None:
 list_of_forbidden_words = ['hello', 'world']
 censored_text('files/testFile.txt', list_of_forbidden_words)
 
+
 # Task_2
+
+
+def words_count(text: str) -> None:
+    source_text = delete_some_symbols(read_txt_file(text))
+    source_text = source_text.split(sep=' ')
+    words_count_var = len(source_text)
+
+    for element in range(0, len(source_text)):
+        source_text[element] = source_text[element].lower()
+
+    source_text.sort()
+
+    while '' in source_text:
+        source_text.remove('')
+
+    source_text_uniq_word = []
+    source_text_uniq_word = list(set(source_text))
+    source_text_uniq_word_dict = {}
+
+    for uniq_elem in range(0, len(source_text_uniq_word)):
+        uniq_word_counter = 0
+        for i in range(0, len(source_text)):
+            if source_text_uniq_word[uniq_elem] == source_text[i]:
+                uniq_word_counter += 1
+        source_text_uniq_word_dict[source_text_uniq_word[uniq_elem]] = uniq_word_counter
+
+    print(source_text_uniq_word_dict)
+
+
+words_count('files/someTextForCount.txt')
