@@ -1,5 +1,3 @@
-# Task_1
-
 def read_txt_file(filename: str):
     with open(filename, 'rt') as file:
         data = file.read()
@@ -37,6 +35,8 @@ def censor_function(forbidden_word: str) -> str:
         forbidden_word = forbidden_word[0] + '*' * star_count + forbidden_word[len(forbidden_word) - 1]
     return forbidden_word
 
+
+# Task_1
 
 def censored_text(text: str, forbidden_words: list) -> None:
     """
