@@ -1,6 +1,5 @@
 import csv
 import json
-from random import randint
 
 
 def write_to_csv(filename: str, data: list):
