@@ -1,3 +1,15 @@
+import csv
+import json
+from random import randint
+
+
+def write_to_csv(filename: str, data: list):
+    with open(filename, 'w', newline='') as file:
+        writer = csv.writer(file, delimiter=';')
+        for row in data:
+            writer.writerow(row)
+
+
 def read_txt_file(filename: str):
     with open(filename, 'rt') as file:
         data = file.read()
@@ -20,14 +32,11 @@ def delete_some_symbols(text: str) -> str:
 
 def censor_function(forbidden_word: str) -> str:
     """
-    функция возвращает строку с подмененными центральными символами на *
+    функция возвращает строку с тем же количеством символов подмененные на "*"
     :param forbidden_word: само слово
     :return: обработанное слово
     """
-
-    if len(forbidden_word) > 2:
-        star_count = len(forbidden_word) - 2
-        forbidden_word = forbidden_word[0] + '*' * star_count + forbidden_word[len(forbidden_word) - 1]
+    forbidden_word = '*' * len(forbidden_word)
     return forbidden_word
 
 
@@ -52,11 +61,11 @@ def censored_text(text: str, forbidden_words: list) -> None:
 
     source_text_copy = ' '.join(source_text_copy)
     print(source_text_copy)
-    write_txt_file('files/testFileCensored.txt', source_text_copy)
+    write_txt_file('files/hw13/testFileCensored.txt', source_text_copy)
 
 
 list_of_forbidden_words = ['hello', 'world']
-censored_text('files/testFile.txt', list_of_forbidden_words)
+censored_text('files/hw13/text_file.txt', list_of_forbidden_words)
 
 
 # Task_2
@@ -86,7 +95,19 @@ def words_count(text: str) -> None:
                 uniq_word_counter += 1
         source_text_uniq_word_dict[source_text_uniq_word[uniq_elem]] = uniq_word_counter
 
-    print(source_text_uniq_word_dict)
+    words_stats_json = json.dumps(source_text_uniq_word_dict)  # превращаем словарь в json
+
+    with open("files/hw13/word_stats.json", "w") as outfile:
+        outfile.write(words_stats_json)
+
+# Task 3
+    stats_list_to_csv_temp = []
+    for key, value in source_text_uniq_word_dict.items():
+        temp = [key, value]
+        stats_list_to_csv_temp.append(temp)
+    stats_list_to_csv = [['Word', 'Count'], *stats_list_to_csv_temp]
+    print(stats_list_to_csv)
+    write_to_csv('files/hw13/word_stats.csv', stats_list_to_csv)
 
 
-words_count('files/someTextForCount.txt')
+words_count('files/hw13/file_words_list.txt')
