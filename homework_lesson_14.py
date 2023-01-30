@@ -44,7 +44,7 @@ def function_3():
 # Task 4
 def function_4():
     person_data = {"name": "Bolt", "age": 23, "gender": "male", "born_date": "06.07.1990"}
-    user_key: int
+    user_key: str
     print('Task 4:')
     continue_programm = True
     while continue_programm:
@@ -55,7 +55,8 @@ def function_4():
             print('Такого ключа не існує')
             continue_programm = True
         else:
-            continue_programm = False
+            continue_programm = True
+        print('Чекаю наступного ключа!')
 
 
 function_1()
