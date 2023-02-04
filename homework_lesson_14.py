@@ -1,5 +1,9 @@
 # Task 1
-def function_1():
+def func_additional_explore_error_in_divider():
+    """
+    Функция, которая последовательно делит элементы двух разных списков и выводит в консоль подробное описание ошибки
+    :return:
+    """
     divide_values = [2, 0, None, "1", True, False, [], {}]
     values_to_devide = [10, "1", None, True, False, [], 0, {}]
     print('Task 1:')
@@ -14,7 +18,14 @@ def function_1():
 
 
 # Task 2
-def function_2():
+def func_divider():
+    """
+        Функция, которая последовательно делит элементы двух разных списков и выводит в консоль одно из 2
+        состояние выполнения деления:
+            - Щось пішло не так
+            - Ділення пройшло успішно!
+        :return:
+        """
     divide_values = [2, 0, None, "1", True, False, [], {}]
     values_to_devide = [10, "1", None, True, False, [], 0, {}]
     print('Task 2:')
@@ -29,7 +40,13 @@ def function_2():
 
 
 # Task 3
-def function_3():
+def index_printer():
+    """
+    Функция которая позволяет ввести индекс и получить вывод его значения в консоль
+    в случае некорректного индекса пишет в консоль - Потрібно ввести ціле число!
+    в случае несуществующего индекса пишет в консоль - Такого індексу не існує
+    :return:
+    """
     list_of_integers = [0, 1, 2, 3, 4, 5]
     print('Task 3:')
     user_index = input('Enter element: ')
@@ -42,7 +59,13 @@ def function_3():
 
 
 # Task 4
-def function_4():
+def taxi_driver_info():
+    """
+    Функция которая позволяет вывести значение ключа по данным словаря, где ключ вводится с клавиатуры
+    в случа ошибки выводится в консоль - Такого ключа не існує
+    в случае успеха - ввод нового ключа
+    :return:
+    """
     person_data = {"name": "Bolt", "age": 23, "gender": "male", "born_date": "06.07.1990"}
     user_key: str
     print('Task 4:')
@@ -59,7 +82,7 @@ def function_4():
         print('Чекаю наступного ключа!')
 
 
-function_1()
-function_2()
-function_3()
-function_4()
+func_additional_explore_error_in_divider()
+func_divider()
+index_printer()
+taxi_driver_info()
