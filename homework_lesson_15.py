@@ -64,7 +64,7 @@ class Employee:
                 'skills': self.skills,
                 'people_lang': self.people_lang,
                 'coding_lang': self.coding_lang}
-        data = json.dumps(data, ensure_ascii = False)  # второй аргумент - фикс записи кирилицы в читаемом виде
+        data = json.dumps(data, ensure_ascii=False)  # второй аргумент - фикс записи кирилицы в читаемом виде
         with open(self.export_json_file_path, "w") as outfile:
             outfile.write(data)
 
