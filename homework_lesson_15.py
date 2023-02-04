@@ -3,7 +3,7 @@ import csv
 import json
 class Employee:
     """
-    Documentation: класс с данными о конкретном человеке
+    Documentation: класс с данными о конкретном человеке, в котором 2 метода записи в файлы json и csv
     """
     firstname: str()
     lastname: str()
@@ -35,6 +35,9 @@ class Employee:
         self.coding_lang = coding_lang
 
     def write_to_csv(self):
+        """
+        :return: fill data in csv file in files/hw15/employee.csv
+        """
         data = {
              'firstname': self.firstname,
              'lastname': self.lastname,
@@ -49,6 +52,9 @@ class Employee:
                 file.write("%s, %s\n" % (key, data[key]))
 
     def write_to_json(self):
+        """
+        :return: fill data in json file in files/hw15/employee.json
+        """
         data = {'firstname': self.firstname,
                 'lastname': self.lastname,
                 'age': self.age,
@@ -72,6 +78,5 @@ class Employee:
 
 empl1 = Employee('Ivasik', 'Telesik', 13, 'ivasik-telesik1732@izkurnanog.ua',
                  ['ходить', 'говорить', 'кодить'], ['Україньська', 'Англійська'], ['Python', 'C++', 'lisp'])
-
 empl1.write_to_json()
 empl1.write_to_csv()
