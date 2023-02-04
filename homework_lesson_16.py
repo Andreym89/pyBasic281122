@@ -56,12 +56,17 @@ class FileWorker:
             return f'Sorted by reverse\n{file_dir_tree_dict_sorted}'
 
     def update_tree_dict(self, new_elem: str):
+        """
+        метод принимающий название нового элемента, если в нем есть '.' значит это файл, иначе - папка
+        :param new_elem:
+        :return:
+        """
         if new_elem.rfind('.') == -1:
             print(f'{new_elem} - this elem is dictionary')
-            self.__file_dir_tree_dict['dirnames'] += new_elem
+            self.__file_dir_tree_dict['dirnames'].append(new_elem)
         else:
             print(f'{new_elem} - this elem is file')
-            self.__file_dir_tree_dict['filenames'] += new_elem
+            self.__file_dir_tree_dict['filenames'].append(new_elem)
         return f'Updated dictionary\n{self.__file_dir_tree_dict}'
 
 
