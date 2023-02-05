@@ -3,7 +3,8 @@ import os
 
 class FileWorker:
     """
-    Класс который позволяет вывести содержимое папки где находится исполняемый файл (папки 1го уровеня + файлы)
+    Класс который позволяет вывести содержимое папки? адрес которой передал пользователь в конструктор
+    (папки 1го уровеня + файлы)
     Так же класс содержит публичный метод который позволяет вывести отсортированный список файлов и папок
 
     sorted_tree_dict(bool) - метод позволяющий вывести отсортированное содержимое папки:
@@ -17,8 +18,8 @@ class FileWorker:
     __directories = list()
     __files = list()
 
-    def __init__(self):
-        self.__path = os.path.abspath(os.getcwd())
+    def __init__(self, path: str):
+        self.__path = path
         self.__attributes_creator()
 
     def print_file_dir_tree_dict(self):
@@ -71,7 +72,7 @@ class FileWorker:
 
 
 # Task 1
-object1 = FileWorker()
+object1 = FileWorker('/Users/andrew/PycharmProjects/pyBasic281122/files')
 
 # Task 2
 print(object1.sorted_tree_dict(True))  # сортировка по алфавиту
