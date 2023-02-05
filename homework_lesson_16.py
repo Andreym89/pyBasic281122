@@ -17,6 +17,7 @@ class FileWorker:
     __path = str()
     __directories = list()
     __files = list()
+    __class_status = bool()
 
     def __init__(self, path: str):
         self.__path = path
@@ -26,19 +27,24 @@ class FileWorker:
         print(self.__file_dir_tree_dict)
 
     def __attributes_creator(self):
-        elements = os.listdir(self.__path)
+        try:
+            elements = os.listdir(self.__path)
 
-        for item in elements:
-            path_to_element = os.path.join(self.__path, item)
-            if os.path.isdir(path_to_element):
-                self.__directories.append(item)
-            elif os.path.isfile(path_to_element):
-                self.__files.append(item)
+            for item in elements:
+                path_to_element = os.path.join(self.__path, item)
+                if os.path.isdir(path_to_element):
+                    self.__directories.append(item)
+                elif os.path.isfile(path_to_element):
+                    self.__files.append(item)
 
-        self.__file_dir_tree_dict['filenames'] = self.__files
-        self.__file_dir_tree_dict['dirnames'] = self.__directories
+            self.__file_dir_tree_dict['filenames'] = self.__files
+            self.__file_dir_tree_dict['dirnames'] = self.__directories
 
-        print(f'Content of original dictionary:\n{self.__file_dir_tree_dict}')
+            print(f'Content of original dictionary:\n{self.__file_dir_tree_dict}')
+            self.__class_status = True
+        except FileNotFoundError:
+            print(f'There is no such directory "{self.__path}"')
+            self.__class_status = False
 
     def sorted_tree_dict(self, sort_type: bool):
         """
@@ -47,14 +53,17 @@ class FileWorker:
         :param sort_type: тип сортировки True - алфавитный порядок, False - обратный порядок
         :return:
         """
-        sort_type = not sort_type
-        file_dir_tree_dict_sorted = dict()
-        file_dir_tree_dict_sorted['filenames'] = sorted(self.__files, key=lambda v: v.upper(), reverse=sort_type)
-        file_dir_tree_dict_sorted['dirnames'] = sorted(self.__directories, key=lambda v: v.upper(), reverse=sort_type)
-        if not sort_type:
-            return f'Sorted by alphabetically:\n{file_dir_tree_dict_sorted}'
+        if self.__class_status:
+            sort_type = not sort_type
+            file_dir_tree_dict_sorted = dict()
+            file_dir_tree_dict_sorted['filenames'] = sorted(self.__files, key=lambda v: v.upper(), reverse=sort_type)
+            file_dir_tree_dict_sorted['dirnames'] = sorted(self.__directories, key=lambda v: v.upper(), reverse=sort_type)
+            if not sort_type:
+                return f'Sorted by alphabetically:\n{file_dir_tree_dict_sorted}'
+            else:
+                return f'Sorted by reverse\n{file_dir_tree_dict_sorted}'
         else:
-            return f'Sorted by reverse\n{file_dir_tree_dict_sorted}'
+            print(f'There is no such directory "{self.__path}"')
 
     def update_tree_dict(self, new_elem: str):
         """
@@ -62,13 +71,16 @@ class FileWorker:
         :param new_elem:
         :return:
         """
-        if new_elem.rfind('.') == -1:
-            print(f'{new_elem} - this elem is dictionary')
-            self.__file_dir_tree_dict['dirnames'].append(new_elem)
+        if self.__class_status:
+            if new_elem.rfind('.') == -1:
+                print(f'{new_elem} - this elem is dictionary')
+                self.__file_dir_tree_dict['dirnames'].append(new_elem)
+            else:
+                print(f'{new_elem} - this elem is file')
+                self.__file_dir_tree_dict['filenames'].append(new_elem)
+            return f'Updated dictionary\n{self.__file_dir_tree_dict}'
         else:
-            print(f'{new_elem} - this elem is file')
-            self.__file_dir_tree_dict['filenames'].append(new_elem)
-        return f'Updated dictionary\n{self.__file_dir_tree_dict}'
+            print(f'There is no such directory "{self.__path}"')
 
 
 # Task 1
