@@ -1,7 +1,8 @@
-# Task 1
+from random import randint
 def print_green(skk): print("\033[92m{}\033[00m".format(skk))
 def print_yellow(skk): print("\033[93m{}\033[00m".format(skk))
 
+# Task 1
 
 class Vehicle:
     """
@@ -138,21 +139,109 @@ print_green('Object of parent class')
 new_car = Vehicle('AE0000TO', 4, 107, 180)
 print(new_car)
 
-my_auto = MotorCar('ZAZ', 'Lanos', 2011, 'Blue', 'VDBWDEVEW', 5, 'AE0000TO', 4, 105, 180)
 print_yellow('\nMotorCar is child of class Vehicle')
+my_auto = MotorCar('ZAZ', 'Lanos', 2011, 'Blue', 'VDBWDEVEW', 5, 'AE0000TO', 4, 105, 180)
 print(my_auto)
 
-my_bus = Bus('Mercedes', 'Sprinter', 2008, 'White', 'VDBWDEVEWASDFA', 18, 'AE0000TO', 4, 105, 180, 12)
 print_yellow('\nBus is child of class Vehicle')
+my_bus = Bus('Mercedes', 'Sprinter', 2008, 'White', 'VDBWDEVEWASDFA', 18, 'AE0000TO', 4, 105, 180, 12)
 print(my_bus)
 
-my_bicycle = Bicycle(2, 35, 'Red', 'Mountain')
 print_yellow('\nBicycle is child of class Vehicle')
+my_bicycle = Bicycle(2, 35, 'Red', 'Mountain')
 print(my_bicycle)
 
-my_truck = Truck('MAN', 'TGS NN', 2011, 'Grey', 'VDBWDEVEW', 2, 'AE0000TO', 4, 350, 150, "Trailer", 20000)
 print_yellow('\nTruck is child of class Vehicle')
+my_truck = Truck('MAN', 'TGS NN', 2011, 'Grey', 'VDBWDEVEW', 2, 'AE0000TO', 4, 350, 150, "Trailer", 20000)
 print(my_truck)
 
 
 # Task 2
+
+class Animal:
+    name = str()
+    weight = float()
+    speed = str()
+    sound = str()
+
+    def __init__(self, name:str, weight: float, speed: int, sound: str):
+        self.name = name
+        self.weight = weight
+        self.speed = speed
+        self.sound = sound
+
+    def __str__(self):
+        return f'Animal name: {self.name}\nWeight: {self.weight} kg.\nSpeed: {self.speed}'
+
+    def say(self):
+        self.sound += ' '
+        print(f'\nSound - {self.sound * randint(2, 20)}')
+
+
+class Birds(Animal):
+    bird_color = str()
+    nutrition = str()
+
+    def __init__(self, name:str, weight: float, speed: int, sound: str, bird_color: str, nutrition: str):
+        self.name = name
+        self.weight = weight
+        self.speed = speed
+        self.sound = sound
+        self.bird_color = bird_color
+        self.nutrition = nutrition
+
+    def __str__(self):
+        return f'Animal name: {self.name}\nWeight: {self.weight} kg.\nSpeed: {self.speed}' \
+               f'Bird color: {self.bird_color}\nNutrition: {self.nutrition}'
+
+
+class Mammals(Animal):
+    habitat = str()
+    has_thick_coat = bool()
+    has_claws = bool()
+
+    def __init__(self, name:str, weight: float, speed: int, sound: str, habitat: str, coat: bool, claws: bool):
+        self.name = name
+        self.weight = weight
+        self.speed = speed
+        self.sound = sound
+        self.habitat = habitat
+        self.has_thick_coat = coat
+        self.has_claws = claws
+
+    def __str__(self):
+        return f'Animal name: {self.name}\nWeight: {self.weight} kg.\nSpeed: {self.speed}\nHabitat: {self.habitat}' \
+               f'\nThick coat: {self.has_thick_coat}\nClaws: {self.has_claws}'
+
+
+class Gadu(Animal):
+    is_poison = bool()
+
+    def __init__(self, name:str, weight: float, speed: int, poison: bool):
+        self.name = name
+        self.weight = weight
+        self.speed = speed
+        self.is_poison= poison
+
+    def __str__(self):
+        return f'Animal name: {self.name}\nWeight: {self.weight} kg.\nSpeed: {self.speed}\nHas poison: {self.is_poison}'
+
+
+print_green('\nObject of parent class')
+dog = Animal('Dog', 12.1, 30, 'Gav')
+print(dog)
+dog.say()
+
+print_yellow('\nBird is child of class Animal')
+bird_1 = Birds('Bird', 12.2, 30, 'Chirik', 'Brown', 'Worms, bugs')
+print(bird_1)
+bird_1.say()
+
+print_yellow('\nMammals is child of class Animal')
+mammals_1 = Mammals('Cat', 6.1, 30, 'Meow', 'Home, street', True, True)
+print(mammals_1)
+mammals_1.say()
+
+print_yellow('\nGad is child of class Animal')
+ant = Gadu('Ant', 0.00001, 0.01, True)
+print(ant)
